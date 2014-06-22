@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -75,5 +76,30 @@ public class TestBoard {
         }
 
         assertTrue(board.isFull());
+    }
+
+    @Test
+    public void shouldReturnTrueWhenPlayerWinsHorizontally() {
+        for(int n = 0; n < 3; n++) {
+            board.placeMove("x", n);
+        }
+
+        assertTrue(board.isWinner("x"));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenPlayerTwoWinsVertically() {
+        int move = 0;
+        while(move <= 7) {
+            board.placeMove("o", move);
+            move += 3;
+        }
+
+        assertTrue(board.isWinner("o"));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenNoPlayerWin() {
+        assertFalse(board.isWinner("o"));
     }
 }

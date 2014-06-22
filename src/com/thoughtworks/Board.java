@@ -65,4 +65,31 @@ public class Board {
     public void displayResult() {
         out.println("Game is a draw");
     }
+
+    public boolean isWinner(String symbol) {
+        return checkHorizontal(symbol) || checkVertical(symbol);
+    }
+
+    private boolean checkHorizontal(String symbol) {
+        int adjustRow = 0;
+        while(adjustRow <= 6) {
+            if(board[0 + adjustRow].equals(symbol) && board[1+adjustRow].equals(symbol) && board[2 + adjustRow].equals(symbol)) {
+                return true;
+            }
+            adjustRow += 3;
+        }
+        return false;
+    }
+
+    private boolean checkVertical(String symbol) {
+        int adjustRow = 0;
+        while(adjustRow <= 2) {
+            if(board[0 + adjustRow].equals(symbol) && board[3 + adjustRow].equals(symbol) && board[6 + adjustRow].equals(symbol)) {
+                return true;
+            }
+            adjustRow++;
+        }
+        return false;
+    }
+
 }
