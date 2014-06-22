@@ -23,9 +23,9 @@ public class TestPlayer {
     public void setUp() {
         reader = mock(BufferedReader.class);
         printStream = mock(PrintStream.class);
-        board = mock(Board.class);
-        playerOne = new Player(reader, "x", board, 1);
-        playerTwo = new Player(reader, "o", board, 2);
+        board = new Board(printStream);
+        playerOne = new Player(reader, "x", board, printStream, 1);
+        playerTwo = new Player(reader, "o", board, printStream, 2);
     }
 
     @Test
@@ -36,7 +36,11 @@ public class TestPlayer {
         when(reader.readLine()).thenReturn(Integer.toString(move));
         playerOne.getMove();
 
-        verify(board).placeMove(symbol, move - 1);
+        verify(printStream).println(" x |   |   \n" +
+                                    "---------\n" +
+                                    "   |   |   \n" +
+                                    "---------\n" +
+                                    "   |   |   \n");
     }
 
     @Test
@@ -47,7 +51,11 @@ public class TestPlayer {
         when(reader.readLine()).thenReturn(Integer.toString(move));
         playerTwo.getMove();
 
-        verify(board).placeMove(symbol, move-1);
+        verify(printStream).println("   |   | o \n" +
+                                    "---------\n" +
+                                    "   |   |   \n" +
+                                    "---------\n" +
+                                    "   |   |   \n");
     }
 
     @Test
@@ -60,10 +68,4 @@ public class TestPlayer {
 
         verify(reader, atLeast(2)).readLine();
     }
-
-
-
-
-
-
 }

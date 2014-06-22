@@ -20,8 +20,8 @@ public class Game {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         PrintStream printStream = new PrintStream(System.out);
         Board board = new Board(printStream);
-        Player playerOne = new Player(reader, "x", board, 1);
-        Player playerTwo = new Player(reader, "o", board, 2);
+        Player playerOne = new Player(reader, "x", board, System.out, 1);
+        Player playerTwo = new Player(reader, "o", board, System.out, 2);
         playerOne.setOpponent(playerTwo);
         playerTwo.setOpponent(playerOne);
 
@@ -30,20 +30,14 @@ public class Game {
     }
 
     public void playGame() throws IOException {
-        boolean stillPlaying = true;
-        int numTurns = 0;
         Player currentPlayer = playerOne;
         board.displayBoard();
-        while(stillPlaying) {
+        while(!board.isFull()) {
             currentPlayer.getMove();
-
             currentPlayer = currentPlayer.getOpponent();
-
-            numTurns++;
-            if(numTurns > 9) {
-                stillPlaying = false;
-            }
         }
+
+        board.displayResult();
     }
 
 }

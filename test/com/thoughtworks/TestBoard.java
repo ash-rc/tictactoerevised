@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -69,16 +70,10 @@ public class TestBoard {
 
     @Test
     public void shouldReturnTrueWhenBoardIsFull() {
-        // fill the board
-        board.placeMove("x", 0);
-        board.placeMove("o", 1);
-        board.placeMove("x", 2);
-        board.placeMove("o", 3);
-        board.placeMove("x", 4);
-        board.placeMove("o", 5);
-        board.placeMove("x", 6);
-        board.placeMove("o", 7);
-        board.placeMove("x", 8);
+        for(int n = 0; n < 9; n++) {
+            board.placeMove("x", n);
+        }
 
+        assertTrue(board.isFull());
     }
 }

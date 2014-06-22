@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class Board {
     private PrintStream out;
     private String[] board = new String[9];
+    private boolean full;
 
     public Board(PrintStream out) {
         this.out = out;
@@ -50,5 +51,18 @@ public class Board {
 
     private void displayCollisionError() {
         out.println("Location already taken");
+    }
+
+    public boolean isFull() {
+        for(String symbol : board) {
+            if(symbol == " ") {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void displayResult() {
+        out.println("Game is a draw");
     }
 }
