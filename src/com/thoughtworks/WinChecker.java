@@ -3,7 +3,7 @@ package com.thoughtworks;
 /**
  * Created by ashleycampo on 6/23/14.
  */
-public class GameDriver {
+public class WinChecker {
     public void verifyHorizontalWin(String symbol) {
     }
     // class will hold the rules of how to win the games

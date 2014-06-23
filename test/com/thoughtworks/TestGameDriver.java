@@ -14,12 +14,12 @@ import static org.mockito.Mockito.verify;
  */
 public class TestGameDriver {
     Board board;
-    GameDriver gameDriver;
+    WinChecker winChecker;
 
     @Before
     public void setUp() {
         board = mock(Board.class);
-        gameDriver = new GameDriver();
+        winChecker = new WinChecker();
     }
 
     @Test
@@ -29,7 +29,7 @@ public class TestGameDriver {
         horizontalCombination.add(1);
         horizontalCombination.add(2);
         String symbol = "x";
-        gameDriver.verifyHorizontalWin(symbol);
+        winChecker.verifyHorizontalWin(symbol);
 
         verify(board).verifyWin(horizontalCombination, symbol);
     }
