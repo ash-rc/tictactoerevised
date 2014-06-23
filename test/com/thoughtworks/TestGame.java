@@ -29,7 +29,7 @@ public class TestGame {
 
     @Test
     public void shouldPlayGameUntilBoardIsFull() {
-        
+
     }
 
     @Test

@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Arrays;
 
 import static org.mockito.Mockito.*;
 
@@ -23,7 +24,9 @@ public class TestPlayer {
     public void setUp() {
         reader = mock(BufferedReader.class);
         printStream = mock(PrintStream.class);
-        board = new Board(printStream);
+        String[] boardArray = new String[9];
+        Arrays.fill(boardArray, " ");
+        board = new Board(printStream, boardArray);
         playerOne = new Player(reader, "x", board, printStream, 1);
         playerTwo = new Player(reader, "o", board, printStream, 2);
     }
@@ -37,10 +40,10 @@ public class TestPlayer {
         playerOne.getMove();
 
         verify(printStream).println(" x |   |   \n" +
-                                    "---------\n" +
-                                    "   |   |   \n" +
-                                    "---------\n" +
-                                    "   |   |   \n");
+                "---------\n" +
+                "   |   |   \n" +
+                "---------\n" +
+                "   |   |   \n");
     }
 
     @Test
@@ -52,10 +55,10 @@ public class TestPlayer {
         playerTwo.getMove();
 
         verify(printStream).println("   |   | o \n" +
-                                    "---------\n" +
-                                    "   |   |   \n" +
-                                    "---------\n" +
-                                    "   |   |   \n");
+                "---------\n" +
+                "   |   |   \n" +
+                "---------\n" +
+                "   |   |   \n");
     }
 
     @Test

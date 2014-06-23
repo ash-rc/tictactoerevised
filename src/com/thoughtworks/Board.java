@@ -9,11 +9,10 @@ import java.util.Arrays;
 public class Board {
     private PrintStream out;
     private String[] board = new String[9];
-    private boolean full;
 
-    public Board(PrintStream out) {
+    public Board(PrintStream out, String[] board) {
         this.out = out;
-        initializeBoard();
+        this.board = board;
     }
 
     public void displayBoard() {
@@ -43,10 +42,7 @@ public class Board {
     }
 
     private boolean moveValid(int move) {
-        if(board[move] == " ") {
-            return true;
-        }
-        return false;
+        return board[move] == " ";
     }
 
     private void displayCollisionError() {
@@ -63,6 +59,11 @@ public class Board {
     }
 
     public void displayResult() {
+        if(isWinner("x")) {
+            out.println("Player 1 Wins!");
+        } else if (isWinner("o")) {
+            out.println("Player 2 Wins!");
+        }
         out.println("Game is a draw");
     }
 

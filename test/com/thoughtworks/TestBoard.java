@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
+import java.util.Arrays;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -20,8 +21,10 @@ public class TestBoard {
 
     @Before
     public void setUp() {
+        String[] boardArray = new String[9];
+        Arrays.fill(boardArray, " ");
         printStream = mock(PrintStream.class);
-        board = new Board(printStream);
+        board = new Board(printStream, boardArray);
     }
 
     @Test
