@@ -2,6 +2,7 @@ package com.thoughtworks;
 
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by ashleycampo on 6/21/14.
@@ -93,4 +94,12 @@ public class Board {
         return false;
     }
 
+    public boolean verifyWin(List<Integer> combination, String symbol) {
+        for(int combinations: combination) {
+            if (board[combinations] != symbol) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
